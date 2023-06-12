@@ -1,48 +1,66 @@
+import Int "mo:base/Int";
+import Float "mo:base/Float";
+
 actor class Calculator() {
-  // Step 1 -  Define a mutable variable called `counter`.
+    // Paso 1 -  Define una variable mutable llamada `counter`.
+    var counter : Float = 0;
+    
+    // Paso 2 - Implementa el add
+    public func add(x : Float) : async Float {
+    counter += x;
+    return counter;
+    };
+    
+    // Paso 3 - Implementa el sub 
+    public func sub(x : Float) : async Float {
+    counter-=x;
+    return counter;
+    };
+    
+    // Paso 4 - Implementa el mul 
+    public func mul(x : Float) : async Float {
+       counter *= x;
+       return counter;
+    };
+    
+    // Paso 5 - Implementa el div 
+    public func div(x : Float) : async Float {
+      if(x==0){
+        return 0;
+      }
+      else
+      {
+        counter /=x;
+        return counter;
+      }
+    };
+    
+    // Paso 6 - Implementa el reset 
+    public func reset(): async () {
+       counter := 0;
+    };
+    
+    // Paso 7 - Implementa el query 
+    public query func see() : async Float {
+        return counter;
+    };
+    
+    // Paso 8 - Implementa el power 
+    public func power(x : Float) : async Float {
+        counter **= x;
+        return counter;
+    };
+    
+    // Paso 9 - Implementa el sqrt 
+    public func sqrt() : async Float {
+        counter := Float.sqrt(counter);
+        return counter;
+    };
+    
+    // Paso 10 - Implementa el floor 
+    public func floor() : async Int {
 
-  // Step 2 - Implement add
-  public func add(x : Float) : async Float {
-    return 0.0;
-  };
-
-  // Step 3 - Implement sub
-  public func sub(x : Float) : async Float {
-    return 0.0;
-  };
-
-  // Step 4 - Implement mul
-  public func mul(x : Float) : async Float {
-    return 0.0;
-  };
-
-  // Step 5 - Implement div
-  public func div(x : Float) : async Float {
-    return 0.0;
-  };
-
-  // Step 6 - Implement reset
-  public func reset() : async () {
-    return ();
-  };
-
-  // Step 7 - Implement query
-  public query func see() : async Float {
-    return 0.0;
-  };
-
-  // Step 8 - Implement power
-  public func power(x : Float) : async Float {
-    return 0.0;
-  };
-
-  // Step 9 - Implement sqrt
-  public func sqrt() : async Float {
-    return 0.0;
-  };
-
-  // Step 10 - Implement floor
-  public func floor() : async Int {
-    return 0;
-  };
+      return Float.toInt(counter);
+     
+      }
 };
